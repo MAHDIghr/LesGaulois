@@ -28,8 +28,7 @@ public class Gaulois {
 		romain.recevoirCoup(force / 3);
 	}
 
-	@Override
-	public String toString() {
-		return "Gaulois [nom=" + nom + ", force=" + force + "]";
-	}
+
+
 }
+
