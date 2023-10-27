@@ -36,10 +36,28 @@ public class Romain {
 		}
 		assert forceDebut < force : " erreur : la force du romain n'a pas deminuee ";
 	}
-	
+
 	public void sEquiper(Equipement equipement) {
-		
-		
+		switch (nbEquipement) {
+		case 2:
+			System.out.println("« Le soldat " + getNom() + " est déjà bien protégé !  » ");
+			break;
+		case 1:
+			if (this.equipement[0] == equipement) {
+				System.out.println("« Le soldat " + getNom() + " possède déja " + equipement.getNom() + "!");
+			} else {
+				this.equipement[1] = equipement;
+				nbEquipement++;
+				System.out.println(" Le soldat " + getNom() +" s’équipe avec un " + equipement.getNom());
+			}
+			break;
+		default:
+			this.equipement[0] = equipement;
+			nbEquipement++;
+			System.out.println(" Le soldat " + getNom() +" s’équipe avec un " + equipement.getNom());
+			break;
+		}
+
 	}
 
 	@Override
@@ -50,9 +68,10 @@ public class Romain {
 	public static void main(String[] args) {
 		Romain Minus = new Romain("Minus", 6);
 		System.out.println(Minus);
-		System.out.println(Equipement.CASQUE);
-		System.out.println(Equipement.BOUCLIER);
-
+		Minus.sEquiper(Equipement.CASQUE);
+		Minus.sEquiper(Equipement.CASQUE);
+		Minus.sEquiper(Equipement.BOUCLIER);
+		Minus.sEquiper(Equipement.CASQUE);
 	}
 
 }

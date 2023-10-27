@@ -13,5 +13,9 @@ public enum Equipement {
         return nom;
     }
 
+	public String getNom() {
+		return nom;
+	}
+
 
 }
