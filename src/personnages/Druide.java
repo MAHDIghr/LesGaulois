@@ -2,54 +2,62 @@ package personnages;
 
 import java.util.Random;
 
-
 public class Druide {
 	public Druide(String nom, int effetPotionMax, int effetPotionMin) {
 		this.nom = nom;
 		this.effetPotionMax = effetPotionMax;
-		this.effetPotionMin = effetPotionMin;	
-		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " à "
-			+ effetPotionMax + ".");
+		this.effetPotionMin = effetPotionMin;
+		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " ï¿½ "
+				+ effetPotionMax + ".");
 	}
+
 	private String nom;
 	private int effetPotionMax;
 	private int effetPotionMin;
-	private int  forcePotion = 1;
-	
-	
+	private int forcePotion = 1;
+
 	public String getNom() {
 		return nom;
 	}
-	
+
+
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + "»");
+		System.out.println(prendreParole() + "ï¿½ " + texte + "ï¿½");
 	}
-	
+
 	private String prendreParole() {
 		return "Le druide " + nom + " : ";
 	}
-	
-	private void preparePotion() {
+
+	public void preparePotion() {
 		Random random = new Random();
-		int effetPotionMax = random.nextInt();
-		if (effetPotionMax > 7) {
-			System.out.println("« J'ai préparé\r\n" + 
-					"une super potion de force » : "+ effetPotionMax);
-			
+		forcePotion = random.nextInt(effetPotionMax);
+		if (forcePotion > 7) {
+			System.out.println("je suis "+ getNom() +"  J'ai prepare une super potion de force ! : " + forcePotion);
+
 		} else {
-			System.out.println("Je n'ai pas trouvé tous les ingrédients, ma potion est\r\n" + 
-					"seulement de force :"+ effetPotionMax);
+			System.out.println("je suis "+ getNom() +" Je n'ai pas trouve tous les ingredients, ma potion est seulement de force :"
+					+ forcePotion);
 
 		}
-		
-	
 	}
 	
-	public static void main(String[] args) 
+	public void booster(Gaulois gaulois) {
+		if (gaulois.getNom().equals("Obelix")) {
+			parler("Non, ObÃ©lix !... Tu nâ€™auras pas de potion magique !");
+		} else {
+			gaulois.boirePotion(forcePotion);
+		}
+	}
+	
+	public static void main(String[] args) {
+		Druide Panoramix = new Druide("Panoramix",10, 5);
+		System.out.println(Panoramix);
+		Panoramix.preparePotion();
 		
-		Druide Panoramix = new Druide("Panoramix", effetPotionMax, effetPotionMin)
 	}
 
+	
 
 }
 
